@@ -1,3 +1,12 @@
+# Health Dashboard
+
+This is a responsive health dashboard built with Next.js and Material-UI.
+
+## Features:
+- Responsive sidebar that adapts to mobile and desktop views.
+- Dynamic content with upcoming appointments, health reminders, and health tips.
+- Easy navigation between pages using the sidebar.
+
 ## Tech used
 Next.js 14.2.16 
 node 20.18.0
@@ -105,7 +114,7 @@ used YUP validation schemas
 
 ## Patient Dashboard
 
-Just a static design with reusable sidebar component
+static design with reusable sidebar component
 
 ## Getting Started
 
@@ -117,3 +126,8 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+
+## Screenshot:
+
+![Health Dashboard Screenshot](public/images/screenshot.png)
