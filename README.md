@@ -103,6 +103,10 @@ Provides a link for existing users to navigate to the login page.
 
 used YUP validation schemas
 
+## Patient Dashboard
+
+Just a static design with reusable sidebar component
+
 ## Getting Started
 
 First, run the development server:
