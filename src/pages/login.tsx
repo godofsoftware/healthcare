@@ -38,15 +38,17 @@ const LoginPage: React.FC = () => {
         throw new Error('Login failed');
       }
 
-      const { accessToken } = data;
+      const { accessToken, name } = data;
 
       // Save the token in local storage only if we are in the browser
       if (typeof window !== 'undefined') {
         localStorage.setItem('token', accessToken);
+        localStorage.setItem('username', name);
       }
 
-      alert(data.accessToken ? `(${data.role}) 'Logged in Success' - JWT: ${accessToken}` : 'Failed');
+      //alert(data.accessToken ? `(${data.role}) 'Logged in Success' - JWT: ${accessToken}` : 'Failed');
       // Redirect the user after successful login
+
       router.push('/patientDashboard');
     } catch (error) {
       console.error('Login failed', error);
