@@ -1,6 +1,6 @@
 import { Grid, Button, Typography, Box, Card, CardContent, CardActions } from '@mui/material';
 import { NextPage } from 'next';
-import ResponsiveNav from './responsiveNav'; // Adjust the path based on your folder structure
+import ResponsiveNav from './ResponsiveNav'; // Adjust the path based on your folder structure
 
 const Home: NextPage = () => {
   return (

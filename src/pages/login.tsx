@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router';
-import { useState } from 'react'; // Import useState for managing loading state
+import { useState, useEffect } from 'react'; // Import useEffect for testing localStorage
 
 // Validation schema
 const validationSchema = Yup.object({
@@ -38,12 +38,14 @@ const LoginPage: React.FC = () => {
         throw new Error('Login failed');
       }
 
-      
       const { token } = data;
 
-      // Save the token in local storage
-      localStorage.setItem('token', token);
-      alert(data.message ? `(${data.type}) ${data.message}  - JWT: ${data.token}` : 'Error occurred');
+      // Save the token in local storage only if we are in the browser
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('token', token);
+      }
+
+      alert(data.message ? `(${data.type}) ${data.message} - JWT: ${token}` : 'Error occurred');
 
       // Redirect the user after successful login
       router.push('/patientDashboard');
@@ -53,6 +55,14 @@ const LoginPage: React.FC = () => {
       setLoading(false); // Set loading to false after the login attempt
     }
   };
+
+  // Testing localStorage
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined') {
+  //     localStorage.setItem('testKey', 'testValue');
+  //     console.log(localStorage.getItem('testKey')); // Should output 'testValue'
+  //   }
+  // }, []);
 
   return (
     <>

@@ -19,7 +19,7 @@ const users = [
 ];
 
 // Secret key for JWT (store this securely)
-const JWT_SECRET = 'Squad2_hackathon';
+const JWT_SECRET = 'karpaga_prabhu_hackathon';
 
 export default function handler(req = NextApiRequest, res = NextApiResponse) {
   if (req.method === 'POST') {
