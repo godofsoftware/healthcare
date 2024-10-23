@@ -3,37 +3,38 @@ import { AuthProvider, useAuth } from '../context/AuthContext'; // Import AuthPr
 import { useRouter } from 'next/router';
 
 const PatientDashboardContent: React.FC = () => {
-  const { isAuthenticated, logout } = useAuth();
-  const router = useRouter();
+  
+  // const { isAuthenticated, logout } = useAuth();
+  // const router = useRouter();
 
-  const handleLogout = () => {
-    logout();
-    router.push('/login');
-  };
+  // const handleLogout = () => {
+  //   logout();
+  //   router.push('/login');
+  // };
 
-  if (!isAuthenticated) {
-    return (
-      <Box sx={{ textAlign: 'center', mt: 5 }}>
-        <Typography variant="h5">You are not logged in. Please log in first.</Typography>
-      </Box>
-    );
-  }
+  // if (!isAuthenticated) {
+  //   return (
+  //     <Box sx={{ textAlign: 'center', mt: 5 }}>
+  //       <Typography variant="h5">You are not logged in. Please log in first.</Typography>
+  //     </Box>
+  //   );
+  // }
 
   return (
     <Box sx={{ textAlign: 'center', mt: 5 }}>
       <Typography variant="h4">Welcome to the Patient Dashboard!</Typography>
-      <Button variant="contained" onClick={handleLogout} sx={{ mt: 3 }}>
+      {/* <Button variant="contained" onClick={handleLogout} sx={{ mt: 3 }}>
         Logout
-      </Button>
+      </Button> */}
     </Box>
   );
 };
 
-// Wrap the main component with AuthProvider
-const PatientDashboard: React.FC = () => (
-  <AuthProvider>
-    <PatientDashboardContent />
-  </AuthProvider>
-);
+// // Wrap the main component with AuthProvider
+// const PatientDashboard: React.FC = () => (
+//   <AuthProvider>
+//     <PatientDashboardContent />
+//   </AuthProvider>
+// );
 
-export default PatientDashboard;
+export default PatientDashboardContent;

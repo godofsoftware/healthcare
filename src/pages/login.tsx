@@ -46,7 +46,6 @@ const LoginPage: React.FC = () => {
       }
 
       alert(data.message ? `(${data.type}) ${data.message} - JWT: ${token}` : 'Error occurred');
-
       // Redirect the user after successful login
       router.push('/patientDashboard');
     } catch (error) {
