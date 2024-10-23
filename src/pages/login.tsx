@@ -23,7 +23,7 @@ const LoginPage: React.FC = () => {
     setLoading(true); // Set loading to true when starting login
 
     try {
-      const response = await fetch('/api/login', {
+      const response = await fetch('http://139.59.95.155/webapi/auth/signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -38,14 +38,14 @@ const LoginPage: React.FC = () => {
         throw new Error('Login failed');
       }
 
-      const { token } = data;
+      const { accessToken } = data;
 
       // Save the token in local storage only if we are in the browser
       if (typeof window !== 'undefined') {
-        localStorage.setItem('token', token);
+        localStorage.setItem('token', accessToken);
       }
 
-      alert(data.message ? `(${data.type}) ${data.message} - JWT: ${token}` : 'Error occurred');
+      alert(data.accessToken ? `(${data.role}) 'Logged in Success' - JWT: ${accessToken}` : 'Failed');
       // Redirect the user after successful login
       router.push('/patientDashboard');
     } catch (error) {
