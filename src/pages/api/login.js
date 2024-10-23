@@ -19,7 +19,7 @@ const users = [
 ];
 
 // Secret key for JWT (store this securely)
-const JWT_SECRET = 'karpaga_prabhu_hackathon';
+const JWT_SECRET = process.env.NEXT_PUBLIC_JWT_KEY;
 
 export default function handler(req = NextApiRequest, res = NextApiResponse) {
   if (req.method === 'POST') {

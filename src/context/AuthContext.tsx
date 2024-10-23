@@ -8,7 +8,7 @@ interface AuthContextType {
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
-const JWT_SECRET = 'karpaga_prabhu_hackathon'; // Replace with your actual JWT secret
+const JWT_SECRET = process.env.NEXT_PUBLIC_JWT_KEY; // Replace with your actual JWT secret
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

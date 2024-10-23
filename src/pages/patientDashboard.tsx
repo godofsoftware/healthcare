@@ -6,15 +6,22 @@ import MenuIcon from '@mui/icons-material/Menu';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 
+import { useRouter } from 'next/router';
+
 export default function Home() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-  const user=localStorage.getItem('username')
+  const user = localStorage.getItem('username')
+  const router = useRouter()
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
+  const handleRedirect = (redirect: string) => {
+    router.push(redirect)
+  }
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -80,7 +87,7 @@ export default function Home() {
         </Paper>
 
         <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-          <Button variant="contained" color="success">Book Appointment</Button>
+          <Button variant="contained" color="success" onClick={() => handleRedirect('/appointment')}>Book Appointment</Button>
           <Button variant="contained" color="primary">View Health Records</Button>
           <Button variant="contained" color="secondary">Message Provider</Button>
         </Box>
