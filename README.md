@@ -1,4 +1,120 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Health Dashboard
+
+This is a responsive health dashboard built with Next.js and Material-UI.
+
+## Features:
+- Responsive sidebar that adapts to mobile and desktop views.
+- Dynamic content with upcoming appointments, health reminders, and health tips.
+- Easy navigation between pages using the sidebar.
+
+## Tech used
+Next.js 14.2.16 
+node 20.18.0
+npm 10.9.0
+JWT for security
+Custom AuthProvider
+
+## security headers
+
+X-Content-Type-Options, X-Frame-Options, X-XSS-Protection, Strict-Transport-Security, Referrer-Policy, Permissions-Policy
+
+CSP is commented for dev purpose
+
+all security headers are handled properly in next.config.mjs
+
+## JWT
+
+For JWT used npm jsonwebtoken
+
+## Auth Provider
+
+1.The custom AuthProvider manages authentication state and provides methods to log in and log out.
+2.It verifies the JWT on mount and keeps track of the user's authentication status.
+3.You can access authentication state and methods in any component using the useAuth hook.
+
+## Theme
+
+Used MUI theme
+
+## Visitor page
+
+Designed with responsive nav reusable component
+
+## login page
+
+Imports:
+
+Uses components from Material-UI such as Button, TextField, and Box for building the UI.
+Integrates Formik for form management and Yup for validation schemas.
+Uses Next.js router for navigation after successful login.
+Validation Schema:
+
+A Yup schema is defined to validate the email and password fields. The email must be a valid format, and both fields are required.
+Component State:
+
+Uses useState to manage a loading state while the login request is being processed.
+Initial Values:
+
+Sets initial form values for email and password as empty strings.
+Handle Login Function:
+
+On form submission, it sends a POST request to the /api/login endpoint with the email and password.
+If the response is successful, it saves the JWT token in localStorage (ensuring the code only runs in the browser).
+Alerts the user of the login status and navigates to the /patientDashboard page upon success.
+Form Layout:
+
+Uses Formik's <Field> component to create input fields for email and password, with error handling and display of validation messages.
+Includes a Bayer Logo, a heading for the login form, and links for forgotten passwords and new user registration.
+Loading Indication:
+
+Displays a backdrop with a loading spinner when a login request is in progress.
+Return Statement:
+
+Renders the Formik form within a styled Box component that centers it in the viewport.
+
+## Register page
+
+Imports:
+
+Utilizes Material-UI components like Button, TextField, and Box for building the user interface.
+Integrates Formik for form handling and Yup for validation schemas.
+Uses moment for date manipulation.
+Validation Schema:
+
+A Yup validation schema is defined to ensure:
+Full Name: At least 3 characters and is required.
+Date of Birth (DOB): Must be a valid date, cannot be in the future, and is required.
+Email: Must be in a valid format and is required.
+Password: Must be at least 8 characters long and is required.
+Initial Values:
+
+Defines initial form values for fullName, dob, email, and password as empty strings.
+Handle Registration Function:
+
+On form submission, it sends a POST request to the /api/register endpoint with the form data.
+If successful, it alerts the user with a success message and resets the form.
+If there is an error, it alerts the user with the error message.
+Form Layout:
+
+Uses Formik's <Field> component to create input fields for Full Name, DOB, Email, and Password, with error handling and validation messages.
+Displays the Bayer logo, a registration heading, and a submit button.
+DOB Input:
+
+The DOB field uses the type date, and it restricts the maximum date to today using the moment library.
+Submit Button:
+
+Styled using Material-UI with hover effects.
+Login Link:
+
+Provides a link for existing users to navigate to the login page.
+
+## Validation
+
+used YUP validation schemas
+
+## Patient Dashboard
+
+static design with reusable sidebar component
 
 ## Getting Started
 
@@ -16,25 +132,7 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Screenshot:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![Health Dashboard Screenshot](public/images/screenshot.png)
